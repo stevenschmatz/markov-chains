@@ -25,7 +25,7 @@ class Markov(object):
 		
 		if len(self.words) < 3:
 			return
-		
+
 		for i in range(len(self.words) - 2):
 			yield (self.words[i], self.words[i+1], self.words[i+2])
 			
@@ -48,8 +48,40 @@ class Markov(object):
 		gen_words.append(w2)
 		return ' '.join(gen_words)
 			
-file_ = open('steve_essays.txt','r')
+def condition(word):
+	end_line_chars = {".": 0.7, ',': 0.4}
+	every_other_char = 0.05
+	ending = list(word)[len(list(word))-1]
+	if ending in end_line_chars:
+		if random.uniform(0,1) < end_line_chars[ending]:
+			return True
+	if random.uniform(0,1) < every_other_char:
+		return True
+	return False
+
+def generate_poetry(string):
+	words = string.split(' ')
+	new_word_list = []
+	for word in words:
+		if condition(word):
+			new_word_list.append((word+"\n").lower())
+		else:
+			new_word_list.append(word.lower())
+	return " ".join(new_word_list)
+
+def get_title(list_of_words, length_threshold):
+	title = random.choice(list_of_words)
+	while True:
+		if len(list(title))>length_threshold:
+			break
+		title = random.choice(list_of_words)
+	return title
+
+
+file_ = open('poetry.txt','r')
 MyMarkov = Markov(file_)
 raw_text = MyMarkov.generate_markov_text(size=100)
 
-print raw_text
+
+title = get_title(MyMarkov.file_to_words(), 10).upper()
+print title+"\nSteven Schmatz\n==========="+ "\n "+ generate_poetry(raw_text)
