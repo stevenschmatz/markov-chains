@@ -78,7 +78,7 @@ def get_title(list_of_words, length_threshold):
 	return title
 
 
-file_ = open('poetry.txt','r')
+file_ = open('les_miserables.txt','r')
 MyMarkov = Markov(file_)
 raw_text = MyMarkov.generate_markov_text(size=100)
 
