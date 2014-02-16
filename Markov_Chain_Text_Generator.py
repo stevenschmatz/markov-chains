@@ -78,10 +78,10 @@ def get_title(list_of_words, length_threshold):
 	return title
 
 
-file_ = open('les_miserables.txt','r')
+file_ = open('steve_essays.txt','r')
 MyMarkov = Markov(file_)
 raw_text = MyMarkov.generate_markov_text(size=100)
 
 
 title = get_title(MyMarkov.file_to_words(), 10).upper()
-print title+"\nSteven Schmatz\n==========="+ "\n "+ generate_poetry(raw_text)
+print raw_text #title+"\nSteven Schmatz \n==========="+ "\n "+ 
