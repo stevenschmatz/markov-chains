@@ -2,7 +2,7 @@ __author__ = 'stevenschmatz'
 
 import random, string
 
-my_path = 'poetry.txt'
+my_path = 'les_miserables.txt'
 
 
 class Markov(object):
@@ -36,4 +36,4 @@ class Markov(object):
 
 my_chain = Markov(my_path)
 my_chain.get_triples()
-print my_chain.make_text()
+print my_chain.make_text(length = 500)
