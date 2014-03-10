@@ -2,7 +2,7 @@ __author__ = 'stevenschmatz'
 
 import random, string
 
-my_path = 'les_miserables.txt'
+my_path = '/Users/stevenschmatz/Computer_Science/libraries/sample-texts/sample_novel.txt'
 
 
 class Markov(object):

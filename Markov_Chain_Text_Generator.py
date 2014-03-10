@@ -78,7 +78,7 @@ def get_title(list_of_words, length_threshold):
 	return title
 
 
-file_ = open('steve_essays.txt','r')
+file_ = open('/Users/stevenschmatz/Computer_Science/libraries/sample-texts/sample_novel.txt','r')
 MyMarkov = Markov(file_)
 raw_text = MyMarkov.generate_markov_text(size=100)
 
